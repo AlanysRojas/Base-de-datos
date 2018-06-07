@@ -1,0 +1,63 @@
+CREATE DATABASE IF NOT EXISTS Series;
+
+USE Series;
+
+
+
+
+CREATE TABLE IF NOT EXISTS SeriesA 
+(
+Id INT NOT NULL AUTO_INCREMENT,
+
+nombreDeSerie VARCHAR (100) NOT NULL,
+
+genero VARCHAR(500) NOT NULL,
+
+autor VARCHAR(500) NOT NULL,
+
+protagonista VARCHAR (500) NOT NULL,
+
+paisDeOrigen VARCHAR (500) NOT NULL,
+
+
+
+PRIMARY KEY (id));
+
+
+
+
+INSERT INTO SeriesA (nombreDeSerie,genero,autor,protagonista,paisDeOrigen)
+
+VALUES ('The Walking Dead  ','Terror, Drama','Robert Kirkman y Frank Darabont,','Andrew Lincoln','Estados Unidos'),
+
+('Skins ','Drama juvenil, Drama televisivo','Jamie Brittain','Nicholas Hoult ','Reino Unido'),
+
+('The 100 ','Ficción post-apocalíptica','Jason Rothenberg ','Eliza Taylor','Estados Unidos'),
+
+('13 Reasons Why ','	Drama juvenil, Misterio','Brian Yorkey','Katherine Langford','Estados Unidos');
+
+
+//* Esto permite modificar el tipo de dato o la cantidad de bytes//*
+
+ALTER TABLE SeriesA MODIFY protagonista VARCHAR(800);
+
+
+//* Aquí seleccionamos el id y el campo nombrede serie y lo actualizamos o cambiamos//*
+SELECT id, nombreDeSerie FROM SeriesA WHERE id = 1;
+
+UPDATE SeriesA SET nombreDeSerie = 'Los Caminantes Muertos'WHERE id = 1;
+
+
+//*Aquí seleccionamos id y nombre de serie y eliminamos todos los datos del id 1//*
+SELECT id, nombreDeSerie FROM SeriesA;
+
+DELETE FROM SeriesA WHERE id = 1;
+
+
+//*Aquí borramos de la tabla el campo protagonistas//*
+ALTER TABLE SeriesA DROP protagonista;
+
+
+//*Finalmente con este comando se elimina la base de datos//*
+DROP DATABASE Series;
+
